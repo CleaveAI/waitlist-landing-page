@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { ScrollToTop } from '@/components/helpers/ScrollToTop';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -17,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }

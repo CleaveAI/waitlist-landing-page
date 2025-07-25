@@ -1,16 +1,22 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { AuroraText } from '../magicui/aurora-text';
 import { Button } from '../ui/button';
 import { Spotlight } from '../ui/spotlight-new';
 
 export const Hero: FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    setMounted(true);
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,13 +57,20 @@ export const Hero: FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 w-full">
         <Spotlight />
       </div>
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      {/* Gradient separator at the bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <div className="mb-4 sm:mb-6 mt-20">
+          <div
+            className={`mb-4 sm:mb-6 transition-all duration-1000 transform ${
+              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
             <h1 className="text-landing-hero-heading font-clash text-4xl sm:text-5xl md:text-7xl lg:text-6xl xl:text-7xl leading-[1.1] sm:leading-tight">
               Prompts perfected by{' '}
               <AuroraText
@@ -71,7 +84,11 @@ export const Hero: FC = () => {
             </h1>
           </div>
 
-          <div className="mb-6 sm:mb-8 lg:mb-10">
+          <div
+            className={`mb-6 sm:mb-8 lg:mb-10 transition-all duration-1000 delay-300 transform ${
+              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
             <p className="text-base sm:text-sm md:text-lg lg:text-xl text-landing-hero-subheading max-w-2xl mx-auto leading-relaxed px-2 sm:px-0 mb-8">
               Stop guessing which prompt works best. Version, evaluate, and ship your
               best-performing prompts with confidence.
@@ -123,10 +140,10 @@ export const Hero: FC = () => {
                       <div className="">
                         <Button
                           type="submit"
-                          className="h-full px-8 text-base font-medium text-white transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed bg-gradient-to-r from-custom-purple to-custom-magenta rounded-r-xl rounded-l-none relative overflow-hidden group/button"
+                          className="h-full px-8 text-base font-medium text-white transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed bg-gradient-to-r from-custom-purple/60 to-custom-magenta/60 rounded-r-xl rounded-l-none relative overflow-hidden group/button"
                           disabled={isLoading}
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-custom-magenta to-custom-purple opacity-0 transition-opacity duration-500 ease-out group-hover/button:opacity-100" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-custom-magenta/60 to-custom-purple/60 opacity-0 transition-opacity duration-500 ease-out group-hover/button:opacity-100" />
                           <div className="absolute inset-0 opacity-0 group-hover/button:opacity-20 bg-white/10 transition-opacity duration-300" />
                           <span className="relative z-10 flex items-center gap-2">
                             {isLoading ? (
