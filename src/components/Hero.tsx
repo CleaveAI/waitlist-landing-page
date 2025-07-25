@@ -21,6 +21,8 @@ export const Hero: FC = () => {
   const [promptText, setPromptText] = useState('You are a helpful assistant.');
   const [typingText, setTypingText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const typeText = useCallback((text: string, callback?: () => void) => {
     setIsTyping(true);
@@ -87,15 +89,41 @@ export const Hero: FC = () => {
     };
   }, [animationStage, typeText]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      setIsSubmitted(true);
-      console.log('Email submitted:', email);
-      setTimeout(() => {
-        setIsSubmitted(false);
+      setIsLoading(true);
+      setError('');
+
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to subscribe');
+        }
+
+        setIsSubmitted(true);
         setEmail('');
-      }, 3000);
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 3000);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to subscribe');
+        setTimeout(() => {
+          setError('');
+        }, 3000);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -257,14 +285,21 @@ export const Hero: FC = () => {
                     placeholder="Your Email"
                     className="w-full flex-1 bg-transparent px-4 py-3 text-sm text-white placeholder-[#8A7EAC] focus:outline-none sm:text-base"
                     required
+                    disabled={isLoading}
                   />
                   <Button
                     type="submit"
                     className="whitespace-nowrap rounded-sm bg-gradient-to-r from-custom-purple to-custom-magenta px-6 py-2 text-sm text-white transition-all duration-300 hover:shadow-lg hover:shadow-custom-magenta/20 sm:text-base"
+                    disabled={isLoading}
                   >
-                    Join Waitlist
+                    {isLoading ? 'Joining...' : 'Join Waitlist'}
                   </Button>
                 </div>
+                {error && (
+                  <div className="absolute -bottom-6 left-0 right-0 text-center text-sm text-red-400">
+                    {error}
+                  </div>
+                )}
               </form>
             )}
           </div>
