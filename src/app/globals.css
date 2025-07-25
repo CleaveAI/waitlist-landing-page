@@ -50,7 +50,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   /* Custom Colors */
   --color-landing-hero-heading: oklch(87.1% 0.006 286.286);
-  --color-landing-hero-subheading: oklch(55.2% 0.016 285.938);
+  --color-landing-hero-subheading: oklch(70.5% 0.015 286.067);
   --color-custom-purple: #7e57c2;
   --color-custom-magenta: #ff4081;
 }

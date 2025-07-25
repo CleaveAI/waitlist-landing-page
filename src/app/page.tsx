@@ -1,22 +1,26 @@
 import { FC } from 'react';
 
-import { Benefits } from '@/components/Benefits';
-import { Features } from '@/components/Features';
-import { Footer } from '@/components/Footer';
-import { Hero } from '@/components/Hero';
-import { HowItWorks } from '@/components/HowItWorks';
-import { Navbar } from '@/components/Navbar';
-import { Pricing } from '@/components/Pricing';
+import { Logo } from '@/components/helpers/Logo';
+import { Benefits } from '@/components/pages/Benefits';
+import { Features } from '@/components/pages/Features';
+import { Footer } from '@/components/pages/Footer';
+import { Hero } from '@/components/pages/Hero';
+import { HowItWorks } from '@/components/pages/HowItWorks';
 
 const Home: FC = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <div className="absolute top-0 left-0 right-0 z-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Logo />
+        </div>
+      </div>
       <Hero />
-      <Features />
-      <HowItWorks />
-      <Benefits />
-      <Pricing />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Features />
+        <HowItWorks />
+        <Benefits />
+      </div>
       <Footer />
     </div>
   );
