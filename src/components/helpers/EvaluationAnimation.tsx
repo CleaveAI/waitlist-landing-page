@@ -105,9 +105,9 @@ export const EvaluationAnimation: FC<EvaluationAnimationProps> = ({ className })
       <div className="relative h-full flex flex-col">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4 sm:space-x-6">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 font-clash">
               <div
-                className={`text-3xl font-bold bg-gradient-to-r ${getScoreColor(currentScore)} bg-clip-text text-transparent transition-all duration-700`}
+                className={`text-3xl font-clash bg-gradient-to-r ${getScoreColor(currentScore)} bg-clip-text text-transparent transition-all duration-700`}
               >
                 {currentScore}%
               </div>
@@ -122,7 +122,7 @@ export const EvaluationAnimation: FC<EvaluationAnimationProps> = ({ className })
               </div>
             </div>
 
-            <div className="hidden sm:flex space-x-4">
+            <div className="hidden sm:flex space-x-4 font-clash">
               <div className="flex flex-col items-center space-y-2">
                 <div
                   className={`w-8 h-1.5 rounded-full ${getMetricStatus(currentScore, 40)} transition-all duration-500`}
@@ -147,7 +147,7 @@ export const EvaluationAnimation: FC<EvaluationAnimationProps> = ({ className })
           {currentScore > 80 && (
             <div className="flex items-center space-x-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-3 py-1 animate-fade-in">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-xs text-green-400 font-medium">Optimized</span>
+              <span className="text-xs text-green-400 font-medium font-clash">Optimized</span>
             </div>
           )}
         </div>

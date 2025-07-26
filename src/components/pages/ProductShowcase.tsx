@@ -4,7 +4,7 @@ import { FC, useEffect, useRef, useState } from 'react';
 
 import { EvaluationAnimation } from '../helpers/EvaluationAnimation';
 
-export const DemoBanner: FC = () => {
+export const ProductShowcase: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const bannerRef = useRef<HTMLElement>(null);
 
@@ -45,8 +45,8 @@ export const DemoBanner: FC = () => {
             </span>
           </div>
 
-          <h2 className="font-clash text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-8 leading-tight">
-            Let our Agents Run Evals &<br className="hidden sm:block" /> Fix Your System Prompts
+          <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-8 leading-tight max-w-3xl mx-auto">
+            Let our Agents Run Evals & Fix Your System Prompts
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light">
             Define test cases and let our AI agents automatically optimize your system prompts until
