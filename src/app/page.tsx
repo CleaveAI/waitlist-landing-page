@@ -19,10 +19,15 @@ const Home: FC = () => {
       <Hero />
 
       <div className="relative z-10">
-        <ProductShowcase />
-        <Features />
-        <FrequentlyAskedQuestions />
-        <Footer />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,rgba(126,87,194,0.08)_0%,rgba(255,64,129,0.04)_50%,rgba(126,87,194,0)_80%)]" />
+
+        <div className="relative space-y-8">
+          <ProductShowcase />
+          <Features />
+          <FrequentlyAskedQuestions />
+          <Footer />
+        </div>
       </div>
     </div>
   );

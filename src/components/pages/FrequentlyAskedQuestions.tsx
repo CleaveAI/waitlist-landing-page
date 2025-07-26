@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const FAQs = [
   {
-    question: 'What models does AI Assist leverage?',
+    question: 'How does it work?',
     answer:
       'AI Assist uses state-of-the-art language models to provide accurate and helpful responses to your queries.',
   },
@@ -38,7 +38,6 @@ export function FrequentlyAskedQuestions() {
 
   return (
     <div className="relative w-full">
-      <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(255,64,129,0.04)_0%,rgba(126,87,194,0.02)_80%,transparent_100%)]" />
       <div className="max-w-7xl mx-auto py-16 px-4 md:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-[linear-gradient(88deg,rgba(93,0,255,0.15)_0.35%,rgba(93,0,255,0.05)_98.6%)] rounded-full px-6 py-2 mb-8 border border-purple-500/80 shadow-[0px_2px_10px_0px_rgba(93,0,255,0.15)]">
@@ -52,7 +51,7 @@ export function FrequentlyAskedQuestions() {
             Get answers to commonly asked questions about our AI-powered tools and services.
           </p>
         </div>
-        <div className="mt-10 md:mt-20 max-w-3xl mx-auto divide-y divide-neutral-800">
+        <div className="max-w-3xl mx-auto divide-y divide-neutral-800">
           {FAQs.map((faq, index) => (
             <FAQItem
               key={index}
@@ -120,7 +119,7 @@ const FAQItem = ({
             exit={{ scale: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <IconArrowRight className="absolute inset-0 h-5 w-5 md:h-6 md:w-6 transform text-white-500" />
+            <IconArrowRight className="absolute inset-0 h-5 w-5 md:h-6 md:w-6 transform text-white" />
           </motion.div>
         </div>
       </div>

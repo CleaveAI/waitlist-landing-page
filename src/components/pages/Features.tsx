@@ -1,16 +1,21 @@
 'use client';
 
 import {
-  IconArrowsExchange,
+  IconBrain,
   IconChartLine,
-  IconCoin,
-  IconShield,
+  IconCode,
+  IconDatabase,
+  IconGitBranch,
+  IconRefresh,
+  IconRocket,
+  IconSettings,
   IconTarget,
+  IconTestPipe,
   IconTrendingUp,
-  IconWallet,
+  IconUsers,
 } from '@tabler/icons-react';
 
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { type FC, useEffect, useMemo, useState } from 'react';
 import { AiOutlineOpenAI } from 'react-icons/ai';
 import { RiClaudeLine } from 'react-icons/ri';
 import { SiGooglegemini, SiOllama } from 'react-icons/si';
@@ -44,102 +49,101 @@ const MistralIcon = ({ className }: { className?: string }) => (
 
 export const Features: FC = () => {
   return (
-    <div id="product" className="relative w-full">
-      <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(126,87,194,0.06)_0%,rgba(255,64,129,0.03)_80%,transparent_100%)]" />
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <div className="relative w-full">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-[linear-gradient(88deg,rgba(93,0,255,0.15)_0.35%,rgba(93,0,255,0.05)_98.6%)] rounded-full px-6 py-2 mb-8 border border-purple-500/80 shadow-[0px_2px_10px_0px_rgba(93,0,255,0.15)]">
-            <span className="text-sm text-purple-300 font-medium">Features & Benefits</span>
-          </div>
-
           <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-6 leading-tight max-w-3xl mx-auto">
-            Simplify Crypto Investing with Our Cutting-Edge Tools
+            Features & Benefits
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Simplify crypto investing, trading, and portfolio management with cutting-edge tools
-            designed for everyone—from beginners to pros.
-          </p>
         </div>
-        <div className="mt-20  grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
+
+        <div className="grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
+          {/* Centralized Prompt Management */}
           <Card className="flex flex-col relative justify-between lg:col-span-2">
             <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/3">
-              <CryptoOrbit />
+              <PromptOrbit />
             </div>
             <CardContent className="h-40 absolute bottom-0">
               <CardTitle>
-                Real-time <br /> Trading
+                Centralized <br /> Prompt Management
               </CardTitle>
               <CardDescription>
-                Execute trades instantly with our lightning-fast order execution system. Get
-                real-time market data and never miss a trading opportunity.
+                Host, version, and manage prompts for all agents in one secure location. Streamline
+                your AI operations with centralized control.
               </CardDescription>
             </CardContent>
           </Card>
+
+          {/* Advanced Testing & Monitoring */}
           <Card className="flex relative flex-col justify-between lg:col-span-3">
             <CardContent className="h-40">
               <CardTitle>
-                Global <br /> Market Access
+                Advanced Testing <br /> & Monitoring
               </CardTitle>
               <CardDescription>
-                Trade cryptocurrencies from anywhere in the world with our globally distributed
-                network and support for 100+ countries and regions.
+                Comprehensive testing pipeline with automated unit tests and A/B testing
+                capabilities. Monitor all model interactions and trace their performance in
+                production.
               </CardDescription>
             </CardContent>
             <div className="absolute inset-0">
-              <MapView />
+              <NetworkMonitoring />
             </div>
             <h1
               className={cn(
                 'inline-block p-6 text-2xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]  bg-clip-text text-transparent'
               )}
             >
-              100+
+              99.9%
               <br />
-              Countries
+              Uptime
             </h1>
           </Card>
+
+          {/* Production Analytics */}
           <Card className="flex flex-col relative justify-between lg:col-span-3">
             <h1
               className={cn(
                 'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
               )}
             >
-              542,000
+              Real-time
               <br />
-              Traders
+              Analytics
             </h1>
             <CardSkeletonBody>
               <div className="relative flex h-[300px] w-full flex-col items-start top-20 md:top-10 overflow-hidden rounded-lg bg-background md:shadow-xl">
-                <CryptoIconsList />
+                <AIModelsList />
               </div>
             </CardSkeletonBody>
             <CardContent className="h-40 relative mb-4">
               <CardTitle>
-                Trusted by <br /> Traders Worldwide
+                Production <br /> Analytics
               </CardTitle>
               <CardDescription>
-                Join our growing community of over 500,000 traders who trust our platform for their
-                crypto trading and investment needs.
+                Real-time monitoring of all production chats with automated prompt optimization
+                based on performance data. Track model invocations and inter-model interactions.
               </CardDescription>
             </CardContent>
             <div className="absolute right-4 bottom-4 opacity-10 md:opacity-100">
-              <PeopleGrid />
+              <MetricsGrid />
             </div>
           </Card>
 
+          {/* Iterative Prompt Optimization */}
           <Card className="flex flex-col justify-between lg:col-span-2">
             <CardContent className="h-40">
               <CardTitle>
-                Advanced <br /> Analytics
+                Iterative Prompt <br /> Optimization
               </CardTitle>
               <CardDescription>
-                Get deep insights into your portfolio performance with advanced analytics, risk
-                assessment, and AI-powered trading recommendations.
+                Improve agent prompts through an automated feedback loop based on output evaluation.
+                Our objective scoring system ensures consistent and comparable performance metrics.
               </CardDescription>
             </CardContent>
             <CardSkeletonBody>
               <div className="w-full h-full p-4 rounded-lg px-10 mt-6">
-                <CardStack items={CRYPTO_CARDS} />
+                <OptimizationStack items={OPTIMIZATION_CARDS} />
               </div>
             </CardSkeletonBody>
           </Card>
@@ -149,13 +153,7 @@ export const Features: FC = () => {
   );
 };
 
-export const SkeletonTwo = () => {
-  return (
-    <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent mt-10"></div>
-  );
-};
-
-// Card structure
+// Card structure components remain the same
 const CardSkeletonBody = ({
   children,
   className,
@@ -188,6 +186,7 @@ const CardTitle = ({ children, className }: { children: React.ReactNode; classNa
     </h3>
   );
 };
+
 const CardDescription = ({
   children,
   className,
@@ -229,7 +228,9 @@ const Card = ({ children, className }: { children: React.ReactNode; className?: 
     </motion.div>
   );
 };
-const CryptoIconsList = () => {
+
+// AI Models List Component
+const AIModelsList = () => {
   const commonStyles = useMemo(
     () =>
       'rounded-[13px] w-[50px] h-[50px] md:w-[70px] md:h-[70px] flex-[1_0_0] bg-[linear-gradient(0deg,#333_0%,#333_100%),radial-gradient(297.31%_124.05%_at_91.1%_3.42%,#3B3B3B_0%,#232323_27.05%,#0A0A0A_100%)] flex items-center justify-center',
@@ -238,11 +239,11 @@ const CryptoIconsList = () => {
 
   const icons = useMemo(
     () => [
-      { Icon: AiOutlineOpenAI, delay: 0 },
-      { Icon: MistralIcon, delay: 0.1 },
-      { Icon: SiOllama, delay: 0.2 },
-      { Icon: SiGooglegemini, delay: 0.3 },
-      { Icon: RiClaudeLine, delay: 0.4 },
+      { Icon: AiOutlineOpenAI, delay: 0, name: 'GPT-4' },
+      { Icon: MistralIcon, delay: 0.1, name: 'Mistral' },
+      { Icon: SiOllama, delay: 0.2, name: 'Ollama' },
+      { Icon: SiGooglegemini, delay: 0.3, name: 'Gemini' },
+      { Icon: RiClaudeLine, delay: 0.4, name: 'Claude' },
     ],
     []
   );
@@ -252,19 +253,17 @@ const CryptoIconsList = () => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-
     if (!isHovered) {
       interval = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % icons.length);
       }, 2000);
     }
-
     return () => clearInterval(interval);
   }, [icons.length, isHovered]);
 
   const IconComponents = useMemo(
     () =>
-      icons.map(({ Icon, delay }, index) => (
+      icons.map(({ Icon, delay, name }, index) => (
         <motion.div
           key={index}
           initial={{ scale: 0.5, opacity: 0 }}
@@ -301,6 +300,7 @@ const CryptoIconsList = () => {
             },
           }}
           className={commonStyles}
+          title={name}
         >
           <Icon className="w-6 h-6 md:w-10 md:h-10 text-neutral-200 dark:text-neutral-200" />
         </motion.div>
@@ -315,14 +315,17 @@ const CryptoIconsList = () => {
   );
 };
 
+// Optimization Stack Component
 let interval: NodeJS.Timeout;
+
 type Card = {
   id: number;
   name: string;
   designation?: string;
   content: React.ReactNode;
 };
-export const CardStack = ({
+
+export const OptimizationStack = ({
   items,
   offset,
   scaleFactor,
@@ -347,7 +350,7 @@ export const CardStack = ({
         newArray.unshift(newArray.pop()!);
         return newArray;
       });
-    }, 5000);
+    }, 3000);
   };
 
   return (
@@ -367,9 +370,9 @@ export const CardStack = ({
             }}
           >
             <div className="flex flex-col gap-1 sm:flex-row sm:gap-2">
-              <IconLogo className="w-6 h-6 sm:w-auto sm:h-auto" />
+              <IconBrain className="w-6 h-6 sm:w-auto sm:h-auto text-purple-400" />
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <p className="text-sm sm:text-base  font-medium text-white">{card.name}</p>
+                <p className="text-sm sm:text-base font-medium text-white">{card.name}</p>
                 {card.designation && (
                   <p className="text-sm sm:text-base font-normal text-neutral-200">
                     {card.designation}
@@ -397,7 +400,7 @@ export const Highlight = ({
   return (
     <span
       className={cn(
-        'font-bold bg-emerald-100  bg-emerald-700/[0.2] text-emerald-500 px-1 py-0.5',
+        'font-bold bg-purple-100 bg-purple-700/[0.2] text-purple-400 px-1 py-0.5',
         className
       )}
     >
@@ -406,173 +409,64 @@ export const Highlight = ({
   );
 };
 
-const CRYPTO_CARDS = [
+const OPTIMIZATION_CARDS = [
   {
     id: 0,
-    name: 'Sarah Johnson',
-    designation: 'Crypto Investor',
+    name: 'Prompt v2.1',
+    designation: 'Optimized',
     content: (
       <p>
-        Cleave has completely transformed my crypto trading. The{' '}
-        <Highlight>real-time analytics</Highlight> and portfolio tracking features are game-changing
-        for my investment strategy.
+        Latest optimization achieved <Highlight>94% accuracy</Highlight> with improved response
+        quality and reduced latency through automated feedback loops.
       </p>
     ),
   },
   {
     id: 1,
-    name: 'Michael Chen',
-    designation: 'Day Trader',
+    name: 'A/B Test Results',
+    designation: 'Performance',
     content: (
       <p>
-        The <Highlight>advanced charting tools</Highlight> and instant order execution have given me
-        the edge I need in volatile crypto markets. Best trading platform I&apos;ve used.
+        Version 2.1 shows <Highlight>23% improvement</Highlight> in user satisfaction scores
+        compared to previous iteration with enhanced context understanding.
       </p>
     ),
   },
   {
     id: 2,
-    name: 'Emma Davis',
-    designation: 'Portfolio Manager',
+    name: 'Scoring System',
+    designation: 'Metrics',
     content: (
       <p>
-        Managing multiple crypto portfolios has never been easier. The{' '}
-        <Highlight>risk assessment tools</Highlight> and automated alerts keep my clients&apos;
-        investments safe and profitable.
+        Objective evaluation framework provides <Highlight>consistent scoring</Highlight> across all
+        prompt variations ensuring reliable performance comparisons.
       </p>
     ),
   },
 ];
 
-const IconLogo = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="29"
-      height="33"
-      viewBox="0 0 29 33"
-      fill="none"
-      className={className}
-    >
-      <g filter="url(#filter0_i_997_4364)">
-        <rect y="0.790039" width="28" height="28" rx="5" fill="#262626" />
-      </g>
-      <g filter="url(#filter1_d_997_4364)">
-        <circle cx="14.5" cy="15.29" r="10.5" fill="url(#paint0_radial_997_4364)" />
-        <circle
-          cx="14.5"
-          cy="15.29"
-          r="10.2"
-          stroke="url(#paint1_linear_997_4364)"
-          strokeWidth="0.6"
-        />
-      </g>
-      <defs>
-        <filter
-          id="filter0_i_997_4364"
-          x="0"
-          y="0.790039"
-          width="28"
-          height="29"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dy="1" />
-          <feGaussianBlur stdDeviation="0.5" />
-          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.473682 0 0 0 0 0.473682 0 0 0 0 0.473682 0 0 0 0.7 0"
-          />
-          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_997_4364" />
-        </filter>
-        <filter
-          id="filter1_d_997_4364"
-          x="0"
-          y="3.79004"
-          width="29"
-          height="29"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dy="3" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_997_4364" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_997_4364"
-            result="shape"
-          />
-        </filter>
-        <radialGradient
-          id="paint0_radial_997_4364"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(8.08333 9.16504) rotate(49.9697) scale(19.0456)"
-        >
-          <stop stopColor="#252525" />
-          <stop offset="0.463081" stopColor="#1A1A1A" />
-          <stop offset="1" />
-        </radialGradient>
-        <linearGradient
-          id="paint1_linear_997_4364"
-          x1="14.5"
-          y1="4.79004"
-          x2="14.5"
-          y2="25.79"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#CBCBCB" />
-          <stop offset="1" stopColor="#666666" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-};
-
-const people = [
-  { src: '/images/person1.png', alt: 'Person 1' },
-  { src: '/images/person2.png', alt: 'Person 2' },
-  { src: '/images/person3.png', alt: 'Person 3' },
-  { src: '/images/person4.png', alt: 'Person 4' },
-  { src: '/images/person5.png', alt: 'Person 5' },
-  { src: '/images/person6.png', alt: 'Person 6' },
+// Metrics Grid Component
+const metrics = [
+  { value: '99.9%', label: 'Uptime', icon: IconRocket },
+  { value: '2.3s', label: 'Response', icon: IconTrendingUp },
+  { value: '94%', label: 'Accuracy', icon: IconTarget },
+  { value: '1.2M', label: 'Requests', icon: IconChartLine },
+  { value: '15ms', label: 'Latency', icon: IconSettings },
+  { value: '99.8%', label: 'Success', icon: IconTestPipe },
 ];
 
-const PeopleGrid = () => {
+const MetricsGrid = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-
     if (!isHovered) {
       interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % people.length);
+        setActiveIndex((prev) => (prev + 1) % metrics.length);
       }, 2000);
     }
-
     return () => clearInterval(interval);
   }, [isHovered]);
 
@@ -591,16 +485,16 @@ const PeopleGrid = () => {
         setHoveredIndex(null);
       }}
     >
-      {people.map((person, index) => (
+      {metrics.map((metric, index) => (
         <motion.div
           key={index}
-          className="relative"
+          className="relative bg-neutral-800/50 rounded-lg p-3 border border-neutral-700"
           initial={{ y: 20, opacity: 0 }}
           animate={{
             y: 0,
             opacity: 1,
-            scale: index === activeIndex ? [1, 1.2, 1] : 0.9,
-            rotate: index === activeIndex ? [0, -10, 10, 0] : 0,
+            scale: index === activeIndex ? [1, 1.05, 1] : 0.95,
+            borderColor: index === activeIndex ? '#8b5cf6' : '#404040',
           }}
           transition={{
             duration: 0.6,
@@ -608,41 +502,47 @@ const PeopleGrid = () => {
               duration: 0.8,
               times: [0, 0.5, 1],
               ease: 'easeInOut',
-              repeat: index === activeIndex ? Infinity : 0,
+              repeat: index === activeIndex ? Number.POSITIVE_INFINITY : 0,
               repeatDelay: 1,
             },
-            rotate: {
-              duration: 0.8,
-              times: [0, 0.25, 0.75, 1],
+            borderColor: {
+              duration: 0.3,
               ease: 'easeInOut',
-              repeat: index === activeIndex ? Infinity : 0,
-              repeatDelay: 1,
             },
           }}
           whileHover={{
-            scale: 1.1,
+            scale: 1.05,
             transition: { duration: 0.2 },
           }}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-          <Image
-            src={person.src}
-            alt={person.alt}
-            height={70}
-            width={70}
-            className="rounded-lg"
-            style={{
-              filter: index === activeIndex ? 'brightness(1.2)' : 'brightness(0.8)',
-              transition: 'filter 0.3s ease',
-            }}
-          />
+          <div className="flex items-center gap-2">
+            <metric.icon
+              className={cn(
+                'w-4 h-4 transition-colors duration-300',
+                index === activeIndex ? 'text-purple-400' : 'text-neutral-400'
+              )}
+            />
+            <div>
+              <div
+                className={cn(
+                  'text-sm font-bold transition-colors duration-300',
+                  index === activeIndex ? 'text-white' : 'text-neutral-300'
+                )}
+              >
+                {metric.value}
+              </div>
+              <div className="text-xs text-neutral-500">{metric.label}</div>
+            </div>
+          </div>
         </motion.div>
       ))}
     </div>
   );
 };
 
+// Prompt Orbit Component
 const OrbitingIcons = ({
   centerIcon,
   orbits,
@@ -659,7 +559,6 @@ const OrbitingIcons = ({
   }>;
   className?: string;
 }) => {
-  // Precalculate all orbit data
   const orbitData = React.useMemo(() => {
     return orbits.map((orbit, orbitIndex) => {
       const radius = orbit.radius || 100 + orbitIndex * 80;
@@ -667,12 +566,9 @@ const OrbitingIcons = ({
       const revealTime = orbit.revealTime || 0.5;
       const orbitDelay = orbit.delay || 0;
       const iconCount = orbit.icons.length;
-
-      // Calculate angles for each icon
       const angleStep = 360 / iconCount;
       const angles = Array.from({ length: iconCount }, (_, i) => angleStep * i);
 
-      // Precalculate positions and animations for each icon
       const iconData = angles.map((angle) => {
         const randomDelay = -Math.random() * speed;
         const rotationAngle =
@@ -700,7 +596,7 @@ const OrbitingIcons = ({
             transition: {
               rotate: {
                 duration: speed,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 ease: [0.4, 0, 0.2, 1],
                 delay: randomDelay + orbitDelay,
               },
@@ -723,7 +619,7 @@ const OrbitingIcons = ({
               },
               transition: {
                 duration: speed,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 ease: [0.4, 0, 0.2, 1],
                 delay: randomDelay + orbitDelay,
               },
@@ -763,7 +659,6 @@ const OrbitingIcons = ({
               height: orbit.radius * 2 + 'px',
             }}
           />
-
           {orbit.iconData.map((icon, iconIndex) => (
             <motion.div
               key={iconIndex}
@@ -813,18 +708,18 @@ const OrbitingIcons = ({
   );
 };
 
-const CryptoOrbit = () => {
+const PromptOrbit = () => {
   const orbit1Icons = [
-    <IconChartLine key="chart" className="w-8 h-8 text-white dark:text-white" />,
-    <IconWallet key="wallet" className="w-8 h-8 text-white dark:text-white" />,
-    <IconShield key="shield" className="w-8 h-8 text-white dark:text-white" />,
+    <IconDatabase key="database" className="w-8 h-8 text-purple-400" />,
+    <IconCode key="code" className="w-8 h-8 text-blue-400" />,
+    <IconSettings key="settings" className="w-8 h-8 text-green-400" />,
   ];
 
   const orbit2Icons = [
-    <IconTrendingUp key="trending" className="w-6 h-6 text-white dark:text-white" />,
-    <IconCoin key="coin" className="w-6 h-6 text-white dark:text-white" />,
-    <IconArrowsExchange key="exchange" className="w-6 h-6 text-white dark:text-white" />,
-    <IconTarget key="target" className="w-6 h-6 text-white dark:text-white" />,
+    <IconBrain key="brain" className="w-6 h-6 text-purple-300" />,
+    <IconGitBranch key="branch" className="w-6 h-6 text-blue-300" />,
+    <IconRefresh key="refresh" className="w-6 h-6 text-green-300" />,
+    <IconUsers key="users" className="w-6 h-6 text-yellow-300" />,
   ];
 
   return (
@@ -834,64 +729,71 @@ const CryptoOrbit = () => {
           icons: orbit1Icons,
           rotationDirection: 'clockwise',
           radius: 80,
-          speed: 7,
+          speed: 8,
         },
         {
           icons: orbit2Icons,
           rotationDirection: 'anticlockwise',
           radius: 140,
-          speed: 15,
+          speed: 12,
         },
       ]}
     />
   );
 };
 
-const MapView = () => {
+// Network Monitoring Component
+const NetworkMonitoring = () => {
   const svgMap = useMemo(() => {
     const map = new DottedMap({
       height: 40,
       grid: 'diagonal',
     });
-
     return map.getSVG({
       radius: 0.15,
-      color: '#FFFFFF50',
+      color: '#FFFFFF30',
       shape: 'circle',
     });
   }, []);
 
-  const flashingPoints = useMemo(() => {
-    const points = [];
-    const numPoints = 8;
-
-    // Use a seeded approach to ensure consistent positions
-    const seededRandom = (seed: number) => {
-      const x = Math.sin(seed) * 10000;
-      return x - Math.floor(x);
-    };
-
-    for (let i = 0; i < numPoints; i++) {
-      const seed = i * 123.456; // Different seed for each point
-      points.push({
-        x: 15 + seededRandom(seed) * 70,
-        y: 15 + seededRandom(seed + 1) * 70,
-        delay: (i / numPoints) * 3,
-        duration: 2 + seededRandom(seed + 2),
-      });
-    }
-    return points;
+  const networkNodes = useMemo(() => {
+    // Fixed node positions instead of random
+    return [
+      { x: 20, y: 20, delay: 0, duration: 3, size: 6 },
+      { x: 40, y: 30, delay: 0.3, duration: 3.5, size: 5 },
+      { x: 60, y: 40, delay: 0.6, duration: 4, size: 7 },
+      { x: 80, y: 20, delay: 0.9, duration: 3.2, size: 5 },
+      { x: 30, y: 60, delay: 1.2, duration: 3.8, size: 6 },
+      { x: 50, y: 70, delay: 1.5, duration: 3.3, size: 4 },
+      { x: 70, y: 80, delay: 1.8, duration: 3.6, size: 5 },
+      { x: 25, y: 40, delay: 2.1, duration: 3.4, size: 6 },
+      { x: 45, y: 50, delay: 2.4, duration: 3.7, size: 5 },
+      { x: 65, y: 60, delay: 2.7, duration: 3.5, size: 7 },
+      { x: 85, y: 40, delay: 3.0, duration: 3.9, size: 6 },
+      { x: 35, y: 80, delay: 3.3, duration: 3.2, size: 5 },
+    ];
   }, []);
+
+  const connections = useMemo(() => {
+    // Fixed connections instead of random
+    return [
+      { from: networkNodes[0], to: networkNodes[1], delay: 0 },
+      { from: networkNodes[1], to: networkNodes[2], delay: 0.2 },
+      { from: networkNodes[2], to: networkNodes[3], delay: 0.4 },
+      { from: networkNodes[4], to: networkNodes[5], delay: 0.6 },
+      { from: networkNodes[5], to: networkNodes[6], delay: 0.8 },
+      { from: networkNodes[7], to: networkNodes[8], delay: 1.0 },
+      { from: networkNodes[8], to: networkNodes[9], delay: 1.2 },
+    ];
+  }, [networkNodes]);
 
   return (
     <div className="relative w-full h-full overflow-hidden">
       <div className="absolute inset-0 transition-opacity duration-300">
         <Image
           src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-          className="h-full w-full object-cover absolute top-0 -right-2 -mt-14 
-            [mask-image:linear-gradient(to_bottom,transparent,white_15%,white_85%,transparent)]
-            pointer-events-none select-none opacity-50"
-          alt="Interactive world map visualization"
+          className="h-full w-full object-cover absolute top-0 -right-2 -mt-14 [mask-image:linear-gradient(to_bottom,transparent,white_15%,white_85%,transparent)] pointer-events-none select-none opacity-30"
+          alt="Network monitoring visualization"
           height={595}
           width={356}
           priority={true}
@@ -899,24 +801,51 @@ const MapView = () => {
         />
       </div>
 
+      {/* Network connections */}
+      <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
+        {connections.map((connection, i) => (
+          <motion.line
+            key={i}
+            x1={`${connection.from.x}%`}
+            y1={`${connection.from.y}%`}
+            x2={`${connection.to.x}%`}
+            y2={`${connection.to.y}%`}
+            stroke="rgba(139, 92, 246, 0.3)"
+            strokeWidth="1"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.6 }}
+            transition={{
+              duration: 2,
+              delay: connection.delay,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: 'reverse',
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+      </svg>
+
+      {/* Network nodes */}
       <div className="absolute inset-0" aria-hidden="true">
-        {flashingPoints.map((point, i) => (
+        {networkNodes.map((node, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-white rounded-full shadow-glow"
+            className="absolute rounded-full bg-purple-400 shadow-glow"
             style={{
-              left: `${point.x}%`,
-              top: `${point.y}%`,
-              boxShadow: '0 0 12px rgba(255,255,255,0.4)',
+              left: `${node.x}%`,
+              top: `${node.y}%`,
+              width: `${node.size}px`,
+              height: `${node.size}px`,
+              boxShadow: '0 0 12px rgba(139, 92, 246, 0.6)',
             }}
             animate={{
-              opacity: [0, 0.8, 0],
-              scale: [1, 1.4, 1],
+              opacity: [0.4, 1, 0.4],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: point.duration,
-              delay: point.delay,
-              repeat: Infinity,
+              duration: node.duration,
+              delay: node.delay,
+              repeat: Number.POSITIVE_INFINITY,
               ease: 'easeInOut',
             }}
           />

@@ -32,8 +32,7 @@ export const ProductShowcase: FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,rgba(126,87,194,0.08)_0%,rgba(255,64,129,0.04)_50%,rgba(126,87,194,0)_80%)]" />
+    <section ref={sectionRef} className="relative">
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
         <div
           className={`text-center mb-16 transition-all duration-700 transform ${
@@ -65,11 +64,11 @@ export const ProductShowcase: FC = () => {
 
         <motion.div
           whileHover="animate"
-          className="group relative isolate rounded-2xl overflow-hidden"
+          className="group relative isolate rounded-2xl overflow-hidden h-[400px]"
         >
-          <div className="relative p-8">
-            <div className="relative rounded-xl bg-transparent p-4">
-              <EvaluationAnimation className="mx-auto" />
+          <div className="relative p-8 h-full">
+            <div className="relative rounded-xl bg-transparent p-4 h-full flex items-center justify-center">
+              <EvaluationAnimation className="mx-auto max-h-full" />
             </div>
           </div>
         </motion.div>
