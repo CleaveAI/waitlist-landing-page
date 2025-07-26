@@ -6,6 +6,7 @@ import { Footer } from '@/components/pages/Footer';
 import { FrequentlyAskedQuestions } from '@/components/pages/FrequentlyAskedQuestions';
 import { Hero } from '@/components/pages/Hero';
 import { ProductShowcase } from '@/components/pages/ProductShowcase';
+import { WorkflowChart } from '@/components/pages/WorkflowChart';
 
 const Home: FC = () => {
   return (
@@ -24,6 +25,7 @@ const Home: FC = () => {
 
         <div className="relative space-y-8">
           <ProductShowcase />
+          <WorkflowChart />
           <Features />
           <FrequentlyAskedQuestions />
           <Footer />
