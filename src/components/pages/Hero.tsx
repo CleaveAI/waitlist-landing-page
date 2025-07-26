@@ -58,12 +58,11 @@ export const Hero: FC = () => {
   };
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 w-full">
         <Spotlight />
       </div>
-      {/* Gradient separator at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+      {/* Remove the bottom gradient div */}
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center flex flex-col items-center">

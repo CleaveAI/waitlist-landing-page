@@ -4,15 +4,12 @@ import { FC, useEffect, useRef, useState } from 'react';
 
 import { motion } from 'framer-motion';
 
-import { cn } from '@/lib/utils';
-
 import { EvaluationAnimation } from '../helpers/EvaluationAnimation';
-import { GlowingEffect } from '../ui/glowing-effect';
+import { AuroraText } from '../magicui/aurora-text';
 
 export const ProductShowcase: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const bannerRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,73 +24,56 @@ export const ProductShowcase: FC = () => {
       }
     );
 
-    if (bannerRef.current) {
-      observer.observe(bannerRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.9, ease: 'easeOut' }}
-      ref={containerRef}
-      className="relative mx-auto w-full max-w-7xl p-2 md:p-4"
-    >
-      <div className="rounded-[50px] relative">
-        <GlowingEffect
-          spread={60}
-          glow={true}
-          disabled={false}
-          proximity={64}
-          inactiveZone={0.01}
-          borderWidth={5}
-          blur={10}
-        />
-        <section ref={bannerRef} className="relative py-28 overflow-hidden">
-          {/* Enhanced gradient background */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.15),transparent_70%)]"></div>
+    <section ref={sectionRef} className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,rgba(126,87,194,0.08)_0%,rgba(255,64,129,0.04)_50%,rgba(126,87,194,0)_80%)]" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+        <div
+          className={`text-center mb-16 transition-all duration-700 transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <div className="inline-flex items-center space-x-2 bg-[linear-gradient(88deg,rgba(93,0,255,0.15)_0.35%,rgba(93,0,255,0.05)_98.6%)] rounded-full px-6 py-2 mb-8 border border-purple-500/80 shadow-[0px_2px_10px_0px_rgba(93,0,255,0.15)]">
+            <span className="text-sm text-purple-300 font-medium">
+              Automated Prompt Optimization
+            </span>
+          </div>
 
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              className={`text-center mb-16 transition-all duration-700 transform ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-              }`}
+          <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-6 leading-tight max-w-3xl mx-auto">
+            Let our{' '}
+            <AuroraText
+              className="inline-block"
+              colors={['#7E57C2', '#FF4081', '#7E57C2']}
+              speed={0.8}
             >
-              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/10 to-purple-500/20 rounded-full px-4 py-1.5 mb-8">
-                <span className="text-sm text-purple-300 font-medium">
-                  Automated Prompt Optimization
-                </span>
-              </div>
+              Agents
+            </AuroraText>{' '}
+            Run Evals & Fix Your System Prompts
+          </h2>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            Define test cases and let our AI agents automatically optimize your system prompts until
+            all evaluation thresholds are met.
+          </p>
+        </div>
 
-              <h2
-                className={cn(
-                  'font-clash text-4xl md:text-5xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent mb-8 leading-tight max-w-3xl mx-auto'
-                )}
-              >
-                Let our Agents Run Evals & Fix Your System Prompts
-              </h2>
-              <p className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto font-light">
-                Define test cases and let our AI agents automatically optimize your system prompts
-                until all evaluation thresholds are met.
-              </p>
-            </div>
-
-            <div
-              className={`relative max-w-4xl mx-auto transition-all duration-700 delay-200 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              {/* Simple container with subtle glass effect */}
-              <div className="relative backdrop-blur-sm rounded-2xl bg-neutral-900/40 p-2">
-                <EvaluationAnimation className="mx-auto" />
-              </div>
+        <motion.div
+          whileHover="animate"
+          className="group relative isolate rounded-2xl overflow-hidden"
+        >
+          <div className="relative p-8">
+            <div className="relative rounded-xl bg-transparent p-4">
+              <EvaluationAnimation className="mx-auto" />
             </div>
           </div>
-        </section>
+        </motion.div>
       </div>
-    </motion.div>
+    </section>
   );
 };

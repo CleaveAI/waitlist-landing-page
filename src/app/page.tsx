@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import { Logo } from '@/components/helpers/Logo';
-import { AudienceOverview } from '@/components/pages/AudienceOverview';
 import { Features } from '@/components/pages/Features';
 import { Footer } from '@/components/pages/Footer';
 import { FrequentlyAskedQuestions } from '@/components/pages/FrequentlyAskedQuestions';
@@ -21,7 +20,6 @@ const Home: FC = () => {
 
       <div className="relative z-10">
         <ProductShowcase />
-        <AudienceOverview />
         <Features />
         <FrequentlyAskedQuestions />
         <Footer />

@@ -44,104 +44,106 @@ const MistralIcon = ({ className }: { className?: string }) => (
 
 export const Features: FC = () => {
   return (
-    <div id="product" className="w-full max-w-7xl mx-auto py-4 px-4 md:px-8 md:my-20 md:py-20">
-      <div className="text-balance relative z-20 mx-auto mb-4 max-w-4xl text-center text-lg font-semibold tracking-tight text-neutral-300 md:text-3xl">
-        <h2
-          className={cn(
-            'inline-block text-3xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]',
-            'bg-clip-text text-transparent'
-          )}
-        >
-          Features & Benefits
-        </h2>
-      </div>
-      <p className="max-w-lg text-sm text-center mx-auto mt-4 text-neutral-400">
-        Simplify crypto investing, trading, and portfolio management with cutting-edge tools
-        designed for everyone—from beginners to pros.
-      </p>
-      <div className="mt-20  grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
-        <Card className="flex flex-col relative justify-between lg:col-span-2">
-          <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/3">
-            <CryptoOrbit />
+    <div id="product" className="relative w-full">
+      <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(126,87,194,0.06)_0%,rgba(255,64,129,0.03)_80%,transparent_100%)]" />
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-[linear-gradient(88deg,rgba(93,0,255,0.15)_0.35%,rgba(93,0,255,0.05)_98.6%)] rounded-full px-6 py-2 mb-8 border border-purple-500/80 shadow-[0px_2px_10px_0px_rgba(93,0,255,0.15)]">
+            <span className="text-sm text-purple-300 font-medium">Features & Benefits</span>
           </div>
-          <CardContent className="h-40 absolute bottom-0">
-            <CardTitle>
-              Real-time <br /> Trading
-            </CardTitle>
-            <CardDescription>
-              Execute trades instantly with our lightning-fast order execution system. Get real-time
-              market data and never miss a trading opportunity.
-            </CardDescription>
-          </CardContent>
-        </Card>
-        <Card className="flex relative flex-col justify-between lg:col-span-3">
-          <CardContent className="h-40">
-            <CardTitle>
-              Global <br /> Market Access
-            </CardTitle>
-            <CardDescription>
-              Trade cryptocurrencies from anywhere in the world with our globally distributed
-              network and support for 100+ countries and regions.
-            </CardDescription>
-          </CardContent>
-          <div className="absolute inset-0">
-            <MapView />
-          </div>
-          <h1
-            className={cn(
-              'inline-block p-6 text-2xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]  bg-clip-text text-transparent'
-            )}
-          >
-            100+
-            <br />
-            Countries
-          </h1>
-        </Card>
-        <Card className="flex flex-col relative justify-between lg:col-span-3">
-          <h1
-            className={cn(
-              'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
-            )}
-          >
-            542,000
-            <br />
-            Traders
-          </h1>
-          <CardSkeletonBody>
-            <div className="relative flex h-[300px] w-full flex-col items-start top-20 md:top-10 overflow-hidden rounded-lg bg-background md:shadow-xl">
-              <CryptoIconsList />
-            </div>
-          </CardSkeletonBody>
-          <CardContent className="h-40 relative mb-4">
-            <CardTitle>
-              Trusted by <br /> Traders Worldwide
-            </CardTitle>
-            <CardDescription>
-              Join our growing community of over 500,000 traders who trust our platform for their
-              crypto trading and investment needs.
-            </CardDescription>
-          </CardContent>
-          <div className="absolute right-4 bottom-4 opacity-10 md:opacity-100">
-            <PeopleGrid />
-          </div>
-        </Card>
 
-        <Card className="flex flex-col justify-between lg:col-span-2">
-          <CardContent className="h-40">
-            <CardTitle>
-              Advanced <br /> Analytics
-            </CardTitle>
-            <CardDescription>
-              Get deep insights into your portfolio performance with advanced analytics, risk
-              assessment, and AI-powered trading recommendations.
-            </CardDescription>
-          </CardContent>
-          <CardSkeletonBody>
-            <div className="w-full h-full p-4 rounded-lg px-10 mt-6">
-              <CardStack items={CRYPTO_CARDS} />
+          <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-6 leading-tight max-w-3xl mx-auto">
+            Simplify Crypto Investing with Our Cutting-Edge Tools
+          </h2>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            Simplify crypto investing, trading, and portfolio management with cutting-edge tools
+            designed for everyone—from beginners to pros.
+          </p>
+        </div>
+        <div className="mt-20  grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
+          <Card className="flex flex-col relative justify-between lg:col-span-2">
+            <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/3">
+              <CryptoOrbit />
             </div>
-          </CardSkeletonBody>
-        </Card>
+            <CardContent className="h-40 absolute bottom-0">
+              <CardTitle>
+                Real-time <br /> Trading
+              </CardTitle>
+              <CardDescription>
+                Execute trades instantly with our lightning-fast order execution system. Get
+                real-time market data and never miss a trading opportunity.
+              </CardDescription>
+            </CardContent>
+          </Card>
+          <Card className="flex relative flex-col justify-between lg:col-span-3">
+            <CardContent className="h-40">
+              <CardTitle>
+                Global <br /> Market Access
+              </CardTitle>
+              <CardDescription>
+                Trade cryptocurrencies from anywhere in the world with our globally distributed
+                network and support for 100+ countries and regions.
+              </CardDescription>
+            </CardContent>
+            <div className="absolute inset-0">
+              <MapView />
+            </div>
+            <h1
+              className={cn(
+                'inline-block p-6 text-2xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]  bg-clip-text text-transparent'
+              )}
+            >
+              100+
+              <br />
+              Countries
+            </h1>
+          </Card>
+          <Card className="flex flex-col relative justify-between lg:col-span-3">
+            <h1
+              className={cn(
+                'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
+              )}
+            >
+              542,000
+              <br />
+              Traders
+            </h1>
+            <CardSkeletonBody>
+              <div className="relative flex h-[300px] w-full flex-col items-start top-20 md:top-10 overflow-hidden rounded-lg bg-background md:shadow-xl">
+                <CryptoIconsList />
+              </div>
+            </CardSkeletonBody>
+            <CardContent className="h-40 relative mb-4">
+              <CardTitle>
+                Trusted by <br /> Traders Worldwide
+              </CardTitle>
+              <CardDescription>
+                Join our growing community of over 500,000 traders who trust our platform for their
+                crypto trading and investment needs.
+              </CardDescription>
+            </CardContent>
+            <div className="absolute right-4 bottom-4 opacity-10 md:opacity-100">
+              <PeopleGrid />
+            </div>
+          </Card>
+
+          <Card className="flex flex-col justify-between lg:col-span-2">
+            <CardContent className="h-40">
+              <CardTitle>
+                Advanced <br /> Analytics
+              </CardTitle>
+              <CardDescription>
+                Get deep insights into your portfolio performance with advanced analytics, risk
+                assessment, and AI-powered trading recommendations.
+              </CardDescription>
+            </CardContent>
+            <CardSkeletonBody>
+              <div className="w-full h-full p-4 rounded-lg px-10 mt-6">
+                <CardStack items={CRYPTO_CARDS} />
+              </div>
+            </CardSkeletonBody>
+          </Card>
+        </div>
       </div>
     </div>
   );

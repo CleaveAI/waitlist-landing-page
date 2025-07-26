@@ -49,7 +49,7 @@ export const Footer: FC = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-t from-gray-950 via-gray-900 to-transparent border-t border-gray-800">
+    <footer className="relative bg-gradient-to-t from-gray-950 via-[rgba(126,87,194,0.08)] to-[rgba(255,64,129,0.04)] border-t border-[rgba(126,87,194,0.1)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Brand section */}
@@ -70,8 +70,7 @@ export const Footer: FC = () => {
           </div>
 
           {/* Waitlist signup */}
-          <div className="bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 sm:p-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-2xl"></div>
+          <div className="bg-gradient-to-br from-[rgba(126,87,194,0.05)] via-[rgba(255,64,129,0.03)] to-[rgba(126,87,194,0.05)] backdrop-blur-xl border border-[rgba(126,87,194,0.1)] rounded-2xl p-6 sm:p-8">
             <div className="relative">
               <div className="flex flex-col space-y-4">
                 <div>
@@ -142,7 +141,7 @@ export const Footer: FC = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-12 pt-8 border-t border-[rgba(126,87,194,0.2)]">
           <p className="text-sm text-landing-hero-subheading text-center">
             © {new Date().getFullYear()} Cleave. All rights reserved.
           </p>

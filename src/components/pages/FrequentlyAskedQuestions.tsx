@@ -6,8 +6,6 @@ import React from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { cn } from '@/lib/utils';
-
 const FAQs = [
   {
     question: 'What models does AI Assist leverage?',
@@ -39,31 +37,32 @@ export function FrequentlyAskedQuestions() {
   const [open, setOpen] = React.useState<string | null>(null);
 
   return (
-    <div className="w-full max-w-7xl mx-auto my-10 md:my-20 py-10 md:py-20 px-4 md:px-8">
-      <div className="text-balance relative z-20 mx-auto mb-4 max-w-4xl text-center">
-        <h2
-          className={cn(
-            'inline-block text-3xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]',
-            'bg-clip-text text-transparent'
-          )}
-        >
-          Let&apos;s Answer Your Questions
-        </h2>
-      </div>
-      <p className="max-w-lg text-sm  text-center mx-auto mt-4 text-neutral-400 px-4 md:px-0">
-        Simplify crypto investing, trading, and portfolio management with cutting-edge tools
-        designed for everyone—from beginners to pros.
-      </p>
-      <div className="mt-10 md:mt-20 max-w-3xl mx-auto divide-y divide-neutral-800">
-        {FAQs.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            open={open}
-            setOpen={setOpen}
-          />
-        ))}
+    <div className="relative w-full">
+      <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(255,64,129,0.04)_0%,rgba(126,87,194,0.02)_80%,transparent_100%)]" />
+      <div className="max-w-7xl mx-auto py-16 px-4 md:px-8">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-[linear-gradient(88deg,rgba(93,0,255,0.15)_0.35%,rgba(93,0,255,0.05)_98.6%)] rounded-full px-6 py-2 mb-8 border border-purple-500/80 shadow-[0px_2px_10px_0px_rgba(93,0,255,0.15)]">
+            <span className="text-sm text-purple-300 font-medium">FAQ</span>
+          </div>
+
+          <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-6 leading-tight max-w-3xl mx-auto">
+            Let&apos;s Answer Your Questions
+          </h2>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            Get answers to commonly asked questions about our AI-powered tools and services.
+          </p>
+        </div>
+        <div className="mt-10 md:mt-20 max-w-3xl mx-auto divide-y divide-neutral-800">
+          {FAQs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              open={open}
+              setOpen={setOpen}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
