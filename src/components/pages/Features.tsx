@@ -12,17 +12,18 @@ import {
 
 import React, { type FC, useEffect, useMemo, useState } from 'react';
 import { AiOutlineOpenAI } from 'react-icons/ai';
+import { FaJava } from 'react-icons/fa6';
 import { RiClaudeLine } from 'react-icons/ri';
-import { SiGooglegemini, SiOllama } from 'react-icons/si';
+import { SiGo, SiGooglegemini, SiJavascript, SiOllama, SiPython, SiRust } from 'react-icons/si';
 
-import DottedMap from 'dotted-map';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
 import { GlowingEffect } from '../ui/glowing-effect';
 
+// Component might be used in future updates
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MistralIcon = ({ className }: { className?: string }) => (
   <svg
     fill="currentColor"
@@ -91,44 +92,40 @@ export const Features: FC = () => {
           </Card>
 
           <Card className="flex flex-col relative justify-between lg:col-span-3 h-[25rem]">
-            <h1
-              className={cn(
-                'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
-              )}
-            >
-              Production
-              <br />
-              Analytics
-            </h1>
-            <CardSkeletonBody>
-              <div className="relative flex flex-col items-start p-6 mt-24 md:mt-20">
-                <CardDescription className="text-base">
+            <div className="flex flex-col h-full">
+              <div className="p-6">
+                <h1 className="text-xl md:text-4xl text-zinc-300">
+                  Production
+                  <br />
+                  Analytics
+                </h1>
+                <CardDescription className="text-base mt-4 max-w-lg">
                   Real-time monitoring of all production chats with automated prompt optimization
                   based on performance data. Track model invocations and inter-model interactions.
                 </CardDescription>
-                <div className="w-full mt-8">
-                  <MetricsGrid />
-                </div>
               </div>
-            </CardSkeletonBody>
+              <div className="flex-1 w-full p-6 pt-0" style={{ minHeight: '200px' }}>
+                <StockChartAnimation />
+              </div>
+            </div>
           </Card>
 
           <Card className="flex relative flex-col justify-between lg:col-span-2 h-[25rem]">
             <CardContent>
               <CardTitle>
-                Advanced Testing &
+                Language
                 <br />
-                Monitoring
+                Agnostic
               </CardTitle>
               <CardDescription>
-                Comprehensive testing pipeline with automated unit tests and A/B testing
-                capabilities. Monitor all model interactions and trace their performance in
-                production.
+                Build AI applications in any programming language. Our platform supports seamless
+                integration across Python, JavaScript, Java, Go, Rust and more through our
+                language-specific SDKs.
               </CardDescription>
             </CardContent>
             <CardSkeletonBody>
               <div className="w-full h-full mt-4">
-                <NetworkMonitoring />
+                <LanguageList />
               </div>
             </CardSkeletonBody>
           </Card>
@@ -161,14 +158,7 @@ const CardContent = ({
 
 const CardTitle = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
-    <h3
-      className={cn(
-        'inline-block text-xl md:text-4xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]  bg-clip-text text-transparent',
-        className
-      )}
-    >
-      {children}
-    </h3>
+    <h3 className={cn('inline-block text-xl md:text-4xl text-zinc-300', className)}>{children}</h3>
   );
 };
 
@@ -211,92 +201,6 @@ const Card = ({ children, className }: { children: React.ReactNode; className?: 
       />
       {children}
     </motion.div>
-  );
-};
-
-// AI Models List Component
-const AnalyticsList = () => {
-  const commonStyles = useMemo(
-    () =>
-      'rounded-[13px] w-[50px] h-[50px] md:w-[70px] md:h-[70px] flex-[1_0_0] bg-[linear-gradient(0deg,#333_0%,#333_100%),radial-gradient(297.31%_124.05%_at_91.1%_3.42%,#3B3B3B_0%,#232323_27.05%,#0A0A0A_100%)] flex items-center justify-center',
-    []
-  );
-
-  const icons = useMemo(
-    () => [
-      { Icon: IconChartLine, delay: 0, name: 'Performance' },
-      { Icon: IconTrendingUp, delay: 0.1, name: 'Trends' },
-      { Icon: IconTarget, delay: 0.2, name: 'Goals' },
-      { Icon: IconTestPipe, delay: 0.3, name: 'Testing' },
-      { Icon: IconSettings, delay: 0.4, name: 'Settings' },
-    ],
-    []
-  );
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (!isHovered) {
-      interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % icons.length);
-      }, 2000);
-    }
-    return () => clearInterval(interval);
-  }, [icons.length, isHovered]);
-
-  const IconComponents = useMemo(
-    () =>
-      icons.map(({ Icon, delay, name }, index) => (
-        <motion.div
-          key={index}
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{
-            scale: 1,
-            opacity: 1,
-            background:
-              index === activeIndex
-                ? 'radial-gradient(297.31% 124.05% at 91.1% 3.42%, #3B3B3B 0%, #232323 27.05%, #0A0A0A 100%), #D9D9D9'
-                : 'linear-gradient(0deg,#333 0%,#333 100%),radial-gradient(297.31% 124.05% at 91.1% 3.42%,#3B3B3B_0%,#232323_27.05%,#0A0A0A_100%)',
-            boxShadow:
-              index === activeIndex
-                ? '0px 22px 6px 0px rgba(0, 0, 0, 0.01), 0px 14px 6px 0px rgba(0, 0, 0, 0.04), 0px 8px 5px 0px rgba(0, 0, 0, 0.14), 0px 4px 4px 0px rgba(0, 0, 0, 0.24), 0px 1px 2px 0px rgba(0, 0, 0, 0.27)'
-                : 'none',
-          }}
-          onMouseEnter={() => {
-            setIsHovered(true);
-            setActiveIndex(index);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          transition={{
-            delay,
-            duration: 0.5,
-            ease: [0.4, 0, 0.2, 1],
-            background: {
-              duration: 0.3,
-              ease: 'easeInOut',
-            },
-            boxShadow: {
-              duration: 0.3,
-              ease: 'easeInOut',
-            },
-          }}
-          className={commonStyles}
-          title={name}
-        >
-          <Icon className="w-6 h-6 md:w-10 md:h-10 text-neutral-200 dark:text-neutral-200" />
-        </motion.div>
-      )),
-    [icons, activeIndex, commonStyles]
-  );
-
-  return (
-    <div className="inline-flex items-center gap-[6px] md:gap-[11px] p-[6px] md:p-[9px] rounded-[0px_20px_20px_0px] bg-[linear-gradient(88deg,#161616_0.35%,#292929_98.6%)] shadow-[0px_112px_31px_0px_rgba(0,0,0,0.02),0px_71px_29px_0px_rgba(0,0,0,0.13),0px_40px_24px_0px_rgba(0,0,0,0.45),0px_18px_18px_0px_rgba(0,0,0,0.77),0px_4px_10px_0px_rgba(0,0,0,0.88)]">
-      {IconComponents}
-    </div>
   );
 };
 
@@ -440,6 +344,8 @@ const metrics = [
   { value: '99.8%', label: 'Success', icon: IconTestPipe },
 ];
 
+// Component might be used in future updates
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MetricsGrid = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -724,115 +630,156 @@ const PromptOrbit = () => {
   );
 };
 
-// Network Monitoring Component
-const NetworkMonitoring = () => {
-  const svgMap = useMemo(() => {
-    const map = new DottedMap({
-      height: 40,
-      grid: 'diagonal',
-    });
-    return map.getSVG({
-      radius: 0.15,
-      color: '#FFFFFF30',
-      shape: 'circle',
-    });
-  }, []);
+// Language List Component
+const LanguageList = () => {
+  const commonStyles = useMemo(
+    () =>
+      'rounded-[13px] w-[50px] h-[50px] md:w-[70px] md:h-[70px] flex-[1_0_0] bg-[linear-gradient(0deg,#333_0%,#333_100%),radial-gradient(297.31%_124.05%_at_91.1%_3.42%,#3B3B3B_0%,#232323_27.05%,#0A0A0A_100%)] flex items-center justify-center',
+    []
+  );
 
-  const networkNodes = useMemo(() => {
-    // Fixed node positions instead of random
-    return [
-      { x: 20, y: 20, delay: 0, duration: 3, size: 6 },
-      { x: 40, y: 30, delay: 0.3, duration: 3.5, size: 5 },
-      { x: 60, y: 40, delay: 0.6, duration: 4, size: 7 },
-      { x: 80, y: 20, delay: 0.9, duration: 3.2, size: 5 },
-      { x: 30, y: 60, delay: 1.2, duration: 3.8, size: 6 },
-      { x: 50, y: 70, delay: 1.5, duration: 3.3, size: 4 },
-      { x: 70, y: 80, delay: 1.8, duration: 3.6, size: 5 },
-      { x: 25, y: 40, delay: 2.1, duration: 3.4, size: 6 },
-      { x: 45, y: 50, delay: 2.4, duration: 3.7, size: 5 },
-      { x: 65, y: 60, delay: 2.7, duration: 3.5, size: 7 },
-      { x: 85, y: 40, delay: 3.0, duration: 3.9, size: 6 },
-      { x: 35, y: 80, delay: 3.3, duration: 3.2, size: 5 },
-    ];
-  }, []);
+  const icons = useMemo(
+    () => [
+      { Icon: SiPython, delay: 0, name: 'Python' },
+      { Icon: SiJavascript, delay: 0.1, name: 'JavaScript' },
+      { Icon: FaJava, delay: 0.2, name: 'Java' },
+      { Icon: SiGo, delay: 0.3, name: 'Go' },
+      { Icon: SiRust, delay: 0.4, name: 'Rust' },
+    ],
+    []
+  );
 
-  const connections = useMemo(() => {
-    // Fixed connections instead of random
-    return [
-      { from: networkNodes[0], to: networkNodes[1], delay: 0 },
-      { from: networkNodes[1], to: networkNodes[2], delay: 0.2 },
-      { from: networkNodes[2], to: networkNodes[3], delay: 0.4 },
-      { from: networkNodes[4], to: networkNodes[5], delay: 0.6 },
-      { from: networkNodes[5], to: networkNodes[6], delay: 0.8 },
-      { from: networkNodes[7], to: networkNodes[8], delay: 1.0 },
-      { from: networkNodes[8], to: networkNodes[9], delay: 1.2 },
-    ];
-  }, [networkNodes]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (!isHovered) {
+      interval = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % icons.length);
+      }, 2000);
+    }
+    return () => clearInterval(interval);
+  }, [icons.length, isHovered]);
+
+  const IconComponents = useMemo(
+    () =>
+      icons.map(({ Icon, delay, name }, index) => (
+        <motion.div
+          key={index}
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            background:
+              index === activeIndex
+                ? 'radial-gradient(297.31% 124.05% at 91.1% 3.42%, #3B3B3B 0%, #232323 27.05%, #0A0A0A 100%), #D9D9D9'
+                : 'linear-gradient(0deg,#333 0%,#333 100%),radial-gradient(297.31% 124.05% at 91.1% 3.42%,#3B3B3B_0%,#232323_27.05%,#0A0A0A_100%)',
+            boxShadow:
+              index === activeIndex
+                ? '0px 22px 6px 0px rgba(0, 0, 0, 0.01), 0px 14px 6px 0px rgba(0, 0, 0, 0.04), 0px 8px 5px 0px rgba(0, 0, 0, 0.14), 0px 4px 4px 0px rgba(0, 0, 0, 0.24), 0px 1px 2px 0px rgba(0, 0, 0, 0.27)'
+                : 'none',
+          }}
+          onMouseEnter={() => {
+            setIsHovered(true);
+            setActiveIndex(index);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+          }}
+          transition={{
+            delay,
+            duration: 0.5,
+            ease: [0.4, 0, 0.2, 1],
+            background: {
+              duration: 0.3,
+              ease: 'easeInOut',
+            },
+            boxShadow: {
+              duration: 0.3,
+              ease: 'easeInOut',
+            },
+          }}
+          className={commonStyles}
+          title={name}
+        >
+          <Icon className="w-6 h-6 md:w-10 md:h-10 text-neutral-200 dark:text-neutral-200" />
+        </motion.div>
+      )),
+    [icons, activeIndex, commonStyles]
+  );
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
-      <div className="absolute inset-0 transition-opacity duration-300">
-        <Image
-          src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-          className="h-full w-full object-cover absolute top-0 -right-2 -mt-14 [mask-image:linear-gradient(to_bottom,transparent,white_15%,white_85%,transparent)] pointer-events-none select-none opacity-30"
-          alt="Network monitoring visualization"
-          height={595}
-          width={356}
-          priority={true}
-          draggable={false}
+    <div className="inline-flex items-center gap-[6px] md:gap-[11px] p-[6px] md:p-[9px] rounded-[0px_20px_20px_0px] bg-[linear-gradient(88deg,#161616_0.35%,#292929_98.6%)] shadow-[0px_112px_31px_0px_rgba(0,0,0,0.02),0px_71px_29px_0px_rgba(0,0,0,0.13),0px_40px_24px_0px_rgba(0,0,0,0.45),0px_18px_18px_0px_rgba(0,0,0,0.77),0px_4px_10px_0px_rgba(0,0,0,0.88)]">
+      {IconComponents}
+    </div>
+  );
+};
+
+const StockChartAnimation = () => {
+  const points = useMemo(() => {
+    const numPoints = 50;
+    const points = [];
+
+    for (let i = 0; i < numPoints; i++) {
+      const x = (i / (numPoints - 1)) * 100;
+      // Use deterministic sine waves with different frequencies for variation
+      const primaryWave = Math.sin((i / numPoints) * Math.PI * 2) * 8;
+      const secondaryWave = Math.sin((i / numPoints) * Math.PI * 4) * 4;
+      const y = Math.min(90, Math.max(20, 80 + primaryWave + secondaryWave - (i / numPoints) * 20));
+      points.push(`${x},${y}`);
+    }
+    return points.join(' ');
+  }, []);
+
+  return (
+    <div className="w-full h-full min-h-[200px]">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="w-full h-full"
+        style={{ minHeight: '200px' }}
+      >
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgb(147, 51, 234)" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="rgb(147, 51, 234)" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <motion.path
+          d={`M 0,100 L 0,${points.split(' ')[0].split(',')[1]} L ${points} L 100,${points.split(' ')[points.split(' ').length - 1].split(',')[1]} L 100,100 Z`}
+          fill="url(#gradient)"
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
-      </div>
-
-      {/* Network connections */}
-      <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
-        {connections.map((connection, i) => (
-          <motion.line
-            key={i}
-            x1={`${connection.from.x}%`}
-            y1={`${connection.from.y}%`}
-            x2={`${connection.to.x}%`}
-            y2={`${connection.to.y}%`}
-            stroke="rgba(139, 92, 246, 0.3)"
-            strokeWidth="1"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 0.6 }}
-            transition={{
-              duration: 2,
-              delay: connection.delay,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: 'reverse',
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
+        <motion.path
+          d={`M 0,${points.split(' ')[0].split(',')[1]} L ${points}`}
+          fill="none"
+          stroke="rgb(147, 51, 234)"
+          strokeWidth="1"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2, ease: 'easeInOut' }}
+        />
+        <motion.circle
+          cx={points.split(' ')[points.split(' ').length - 1].split(',')[0]}
+          cy={points.split(' ')[points.split(' ').length - 1].split(',')[1]}
+          r="2"
+          fill="rgb(147, 51, 234)"
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{
+            scale: [0.5, 1.2, 0.5],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 2,
+          }}
+        />
       </svg>
-
-      {/* Network nodes */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {networkNodes.map((node, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-purple-400 shadow-glow"
-            style={{
-              left: `${node.x}%`,
-              top: `${node.y}%`,
-              width: `${node.size}px`,
-              height: `${node.size}px`,
-              boxShadow: '0 0 12px rgba(139, 92, 246, 0.6)',
-            }}
-            animate={{
-              opacity: [0.4, 1, 0.4],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: node.duration,
-              delay: node.delay,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
     </div>
   );
 };

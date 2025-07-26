@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/next';
+
 import type { Metadata } from 'next';
 
 import { ScrollToTop } from '@/components/helpers/ScrollToTop';
@@ -22,6 +24,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <ScrollToTop />
         {children}
+        <Analytics />
       </body>
     </html>
   );
