@@ -10,27 +10,12 @@ const FAQs = [
   {
     question: 'How does it work?',
     answer:
-      'AI Assist uses state-of-the-art language models to provide accurate and helpful responses to your queries.',
+      'Our platform lets you manage your AI agent prompts through an easy-to-use dashboard and integrated SDK. Instead of hardcoding system prompts, your agents dynamically fetch them from our service. Our AI agent automatically tests different prompts against evaluation criteria using your custom and our built-in test cases—and iteratively refines them until your requirements are fully met and they&apos;re ready for production.',
   },
   {
-    question: 'How does AI Assist use my data?',
+    question: 'When is it coming out?',
     answer:
-      'Your data is handled with strict security measures. Any information used to prompt AI Assist is shared with our AI provider solely for generating responses. Data is automatically deleted within 48 hours of a request.',
-  },
-  {
-    question: "How accurate are AI Assist's responses?",
-    answer:
-      'AI Assist strives for high accuracy by leveraging advanced AI models and continuous improvements. However, we recommend verifying critical information from multiple sources.',
-  },
-  {
-    question: 'How much does AI Assist cost?',
-    answer:
-      'We offer flexible pricing plans to suit different needs. Contact our sales team for detailed pricing information.',
-  },
-  {
-    question: 'How do I get access to AI Assist?',
-    answer:
-      'You can sign up for AI Assist through our website. We offer both individual and enterprise access options.',
+      'We are currently in the process of building the platform and will be launching in the next few months. We will be releasing a public beta in the next few weeks.',
   },
 ];
 export function FrequentlyAskedQuestions() {
@@ -40,15 +25,11 @@ export function FrequentlyAskedQuestions() {
     <div className="relative w-full">
       <div className="max-w-7xl mx-auto py-16 px-4 md:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-[linear-gradient(88deg,rgba(93,0,255,0.15)_0.35%,rgba(93,0,255,0.05)_98.6%)] rounded-full px-6 py-2 mb-8 border border-purple-500/80 shadow-[0px_2px_10px_0px_rgba(93,0,255,0.15)]">
-            <span className="text-sm text-purple-300 font-medium">FAQ</span>
-          </div>
-
           <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-6 leading-tight max-w-3xl mx-auto">
-            Let&apos;s Answer Your Questions
+            Frequently Asked Questions
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Get answers to commonly asked questions about our AI-powered tools and services.
+            Get answers to commonly asked questions about our platform.
           </p>
         </div>
         <div className="max-w-3xl mx-auto divide-y divide-neutral-800">

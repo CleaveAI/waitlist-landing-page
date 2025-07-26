@@ -50,11 +50,14 @@ export const Features: FC = () => {
           <h2 className="font-clash text-4xl md:text-5xl bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 bg-clip-text text-transparent mb-6 leading-tight max-w-3xl mx-auto">
             Features & Benefits
           </h2>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            Check out the features that make Cleave stand out.
+          </p>
         </div>
 
-        <div className="grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 max-w-3xl mx-auto lg:max-w-none">
           {/* Centralized Prompt Management */}
-          <Card className="flex flex-col relative justify-between lg:col-span-2">
+          <Card className="flex flex-col relative justify-between lg:col-span-2 h-[25rem]">
             <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4">
               <PromptOrbit />
             </div>
@@ -70,7 +73,7 @@ export const Features: FC = () => {
           </Card>
 
           {/* Iterative Prompt Optimization */}
-          <Card className="flex flex-col justify-between lg:col-span-3">
+          <Card className="flex flex-col justify-between lg:col-span-3 h-[25rem]">
             <CardContent className="h-40">
               <CardTitle>
                 Iterative Prompt <br /> Optimization
@@ -87,41 +90,35 @@ export const Features: FC = () => {
             </CardSkeletonBody>
           </Card>
 
-          {/* Production Analytics */}
-          <Card className="flex flex-col relative justify-between lg:col-span-3">
+          <Card className="flex flex-col relative justify-between lg:col-span-3 h-[25rem]">
             <h1
               className={cn(
                 'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
               )}
             >
-              Real-time
+              Production
               <br />
               Analytics
             </h1>
             <CardSkeletonBody>
-              <div className="relative flex h-[300px] w-full flex-col items-start top-20 md:top-10 overflow-hidden rounded-lg bg-background md:shadow-xl">
-                <AnalyticsList />
+              <div className="relative flex flex-col items-start p-6 mt-24 md:mt-20">
+                <CardDescription className="text-base">
+                  Real-time monitoring of all production chats with automated prompt optimization
+                  based on performance data. Track model invocations and inter-model interactions.
+                </CardDescription>
+                <div className="w-full mt-8">
+                  <MetricsGrid />
+                </div>
               </div>
             </CardSkeletonBody>
-            <CardContent className="h-40 relative mb-4">
-              <CardTitle>
-                Production <br /> Analytics
-              </CardTitle>
-              <CardDescription>
-                Real-time monitoring of all production chats with automated prompt optimization
-                based on performance data. Track model invocations and inter-model interactions.
-              </CardDescription>
-            </CardContent>
-            <div className="absolute right-4 bottom-4 opacity-10 md:opacity-100">
-              <MetricsGrid />
-            </div>
           </Card>
 
-          {/* Advanced Testing & Monitoring */}
-          <Card className="flex relative flex-col justify-between lg:col-span-2">
-            <CardContent className="h-40">
+          <Card className="flex relative flex-col justify-between lg:col-span-2 h-[25rem]">
+            <CardContent>
               <CardTitle>
-                Advanced Testing <br /> & Monitoring
+                Advanced Testing &
+                <br />
+                Monitoring
               </CardTitle>
               <CardDescription>
                 Comprehensive testing pipeline with automated unit tests and A/B testing
@@ -129,18 +126,11 @@ export const Features: FC = () => {
                 production.
               </CardDescription>
             </CardContent>
-            <div className="absolute inset-0">
-              <NetworkMonitoring />
-            </div>
-            <h1
-              className={cn(
-                'inline-block p-6 text-2xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)]  bg-clip-text text-transparent'
-              )}
-            >
-              99.9%
-              <br />
-              Uptime
-            </h1>
+            <CardSkeletonBody>
+              <div className="w-full h-full mt-4">
+                <NetworkMonitoring />
+              </div>
+            </CardSkeletonBody>
           </Card>
         </div>
       </div>
