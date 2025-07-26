@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@custom-variant dark (&:is(.dark *));
+
 @font-face {
   font-family: 'Clash Grotesk';
   src:
@@ -53,6 +55,12 @@
   --color-landing-hero-subheading: oklch(70.5% 0.015 286.067);
   --color-custom-purple: #7e57c2;
   --color-custom-magenta: #ff4081;
+  --animate-gradient: gradient 8s linear infinite;
+  @keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;
+    }
+  }
 }
 
 :root {
@@ -126,5 +134,14 @@
 
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

@@ -2,6 +2,7 @@
 
 import { FC, useEffect, useState } from 'react';
 
+import { AnimatedGradientBadge } from '../helpers/AnimatedGradientBadge';
 import { AuroraText } from '../magicui/aurora-text';
 import { Button } from '../ui/button';
 import { Spotlight } from '../ui/spotlight-new';
@@ -65,7 +66,14 @@ export const Hero: FC = () => {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <div className="text-center flex flex-col items-center">
+          <div
+            className={`mb-4 transition-all duration-1000 transform ${
+              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <AnimatedGradientBadge />
+          </div>
           <div
             className={`mb-4 sm:mb-6 transition-all duration-1000 transform ${
               mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
