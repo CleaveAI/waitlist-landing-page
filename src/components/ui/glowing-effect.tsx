@@ -99,6 +99,37 @@ import { cn } from '@/lib/utils';
  * ```
  */
 
+/**
+ * A component that creates a glowing effect around its container based on mouse movement.
+ * Inspired by Aceternity UI's glowing effect component.
+ *
+ * @component
+ * @param {Object} props - The component props
+ * @param {number} [props.blur=0] - The amount of blur applied to the glow effect (in pixels)
+ * @param {number} [props.inactiveZone=0.7] - The size of the inactive zone where glow is minimal (0-1)
+ * @param {number} [props.proximity=0] - The distance at which the glow effect starts to appear
+ * @param {number} [props.spread=20] - How far the glow effect spreads (in degrees)
+ * @param {'default'|'white'} [props.variant='default'] - The color variant of the glow
+ * @param {boolean} [props.glow=false] - Whether the glow effect is enabled
+ * @param {string} [props.className] - Additional CSS classes to apply
+ * @param {boolean} [props.disabled=true] - Whether the effect is disabled
+ * @param {number} [props.movementDuration=2] - Duration of the glow movement animation in seconds
+ * @param {number} [props.borderWidth=1] - Width of the glowing border in pixels
+ *
+ * @example
+ * ```jsx
+ * <GlowingEffect
+ *   blur={10}
+ *   spread={30}
+ *   variant="default"
+ *   glow={true}
+ *   disabled={false}
+ * >
+ *   <div>Content goes here</div>
+ * </GlowingEffect>
+ * ```
+ */
+
 interface GlowingEffectProps {
   blur?: number;
   inactiveZone?: number;
