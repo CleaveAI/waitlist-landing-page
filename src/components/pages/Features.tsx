@@ -3,16 +3,11 @@
 import {
   IconBrain,
   IconChartLine,
-  IconCode,
-  IconDatabase,
-  IconGitBranch,
-  IconRefresh,
   IconRocket,
   IconSettings,
   IconTarget,
   IconTestPipe,
   IconTrendingUp,
-  IconUsers,
 } from '@tabler/icons-react';
 
 import React, { type FC, useEffect, useMemo, useState } from 'react';
@@ -60,10 +55,10 @@ export const Features: FC = () => {
         <div className="grid cols-1 lg:grid-cols-5 gap-4 auto-rows-[25rem] max-w-3xl mx-auto lg:max-w-none">
           {/* Centralized Prompt Management */}
           <Card className="flex flex-col relative justify-between lg:col-span-2">
-            <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/3">
+            <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/4">
               <PromptOrbit />
             </div>
-            <CardContent className="h-40 absolute bottom-0">
+            <CardContent className="h-40 absolute bottom-6">
               <CardTitle>
                 Centralized <br /> Prompt Management
               </CardTitle>
@@ -74,8 +69,56 @@ export const Features: FC = () => {
             </CardContent>
           </Card>
 
+          {/* Iterative Prompt Optimization */}
+          <Card className="flex flex-col justify-between lg:col-span-3">
+            <CardContent className="h-40">
+              <CardTitle>
+                Iterative Prompt <br /> Optimization
+              </CardTitle>
+              <CardDescription>
+                Improve agent prompts through an automated feedback loop based on output evaluation.
+                Our objective scoring system ensures consistent and comparable performance metrics.
+              </CardDescription>
+            </CardContent>
+            <CardSkeletonBody>
+              <div className="w-full h-full p-4 rounded-lg px-10 mt-6">
+                <OptimizationStack items={OPTIMIZATION_CARDS} />
+              </div>
+            </CardSkeletonBody>
+          </Card>
+
+          {/* Production Analytics */}
+          <Card className="flex flex-col relative justify-between lg:col-span-3">
+            <h1
+              className={cn(
+                'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
+              )}
+            >
+              Real-time
+              <br />
+              Analytics
+            </h1>
+            <CardSkeletonBody>
+              <div className="relative flex h-[300px] w-full flex-col items-start top-20 md:top-10 overflow-hidden rounded-lg bg-background md:shadow-xl">
+                <AnalyticsList />
+              </div>
+            </CardSkeletonBody>
+            <CardContent className="h-40 relative mb-4">
+              <CardTitle>
+                Production <br /> Analytics
+              </CardTitle>
+              <CardDescription>
+                Real-time monitoring of all production chats with automated prompt optimization
+                based on performance data. Track model invocations and inter-model interactions.
+              </CardDescription>
+            </CardContent>
+            <div className="absolute right-4 bottom-4 opacity-10 md:opacity-100">
+              <MetricsGrid />
+            </div>
+          </Card>
+
           {/* Advanced Testing & Monitoring */}
-          <Card className="flex relative flex-col justify-between lg:col-span-3">
+          <Card className="flex relative flex-col justify-between lg:col-span-2">
             <CardContent className="h-40">
               <CardTitle>
                 Advanced Testing <br /> & Monitoring
@@ -98,54 +141,6 @@ export const Features: FC = () => {
               <br />
               Uptime
             </h1>
-          </Card>
-
-          {/* Production Analytics */}
-          <Card className="flex flex-col relative justify-between lg:col-span-3">
-            <h1
-              className={cn(
-                'inline-block text-right absolute top-0 right-0 p-6 text-xl md:text-6xl bg-[radial-gradient(61.17%_178.53%_at_38.83%_-13.54%,#3B3B3B_0%,#888787_12.61%,#FFFFFF_50%,#888787_80%,#3B3B3B_100%)] bg-clip-text text-transparent'
-              )}
-            >
-              Real-time
-              <br />
-              Analytics
-            </h1>
-            <CardSkeletonBody>
-              <div className="relative flex h-[300px] w-full flex-col items-start top-20 md:top-10 overflow-hidden rounded-lg bg-background md:shadow-xl">
-                <AIModelsList />
-              </div>
-            </CardSkeletonBody>
-            <CardContent className="h-40 relative mb-4">
-              <CardTitle>
-                Production <br /> Analytics
-              </CardTitle>
-              <CardDescription>
-                Real-time monitoring of all production chats with automated prompt optimization
-                based on performance data. Track model invocations and inter-model interactions.
-              </CardDescription>
-            </CardContent>
-            <div className="absolute right-4 bottom-4 opacity-10 md:opacity-100">
-              <MetricsGrid />
-            </div>
-          </Card>
-
-          {/* Iterative Prompt Optimization */}
-          <Card className="flex flex-col justify-between lg:col-span-2">
-            <CardContent className="h-40">
-              <CardTitle>
-                Iterative Prompt <br /> Optimization
-              </CardTitle>
-              <CardDescription>
-                Improve agent prompts through an automated feedback loop based on output evaluation.
-                Our objective scoring system ensures consistent and comparable performance metrics.
-              </CardDescription>
-            </CardContent>
-            <CardSkeletonBody>
-              <div className="w-full h-full p-4 rounded-lg px-10 mt-6">
-                <OptimizationStack items={OPTIMIZATION_CARDS} />
-              </div>
-            </CardSkeletonBody>
           </Card>
         </div>
       </div>
@@ -230,7 +225,7 @@ const Card = ({ children, className }: { children: React.ReactNode; className?: 
 };
 
 // AI Models List Component
-const AIModelsList = () => {
+const AnalyticsList = () => {
   const commonStyles = useMemo(
     () =>
       'rounded-[13px] w-[50px] h-[50px] md:w-[70px] md:h-[70px] flex-[1_0_0] bg-[linear-gradient(0deg,#333_0%,#333_100%),radial-gradient(297.31%_124.05%_at_91.1%_3.42%,#3B3B3B_0%,#232323_27.05%,#0A0A0A_100%)] flex items-center justify-center',
@@ -239,11 +234,11 @@ const AIModelsList = () => {
 
   const icons = useMemo(
     () => [
-      { Icon: AiOutlineOpenAI, delay: 0, name: 'GPT-4' },
-      { Icon: MistralIcon, delay: 0.1, name: 'Mistral' },
-      { Icon: SiOllama, delay: 0.2, name: 'Ollama' },
-      { Icon: SiGooglegemini, delay: 0.3, name: 'Gemini' },
-      { Icon: RiClaudeLine, delay: 0.4, name: 'Claude' },
+      { Icon: IconChartLine, delay: 0, name: 'Performance' },
+      { Icon: IconTrendingUp, delay: 0.1, name: 'Trends' },
+      { Icon: IconTarget, delay: 0.2, name: 'Goals' },
+      { Icon: IconTestPipe, delay: 0.3, name: 'Testing' },
+      { Icon: IconSettings, delay: 0.4, name: 'Settings' },
     ],
     []
   );
@@ -412,34 +407,34 @@ export const Highlight = ({
 const OPTIMIZATION_CARDS = [
   {
     id: 0,
-    name: 'Prompt v2.1',
-    designation: 'Optimized',
+    name: 'SDK Integration',
+    designation: 'Setup',
     content: (
       <p>
-        Latest optimization achieved <Highlight>94% accuracy</Highlight> with improved response
-        quality and reduced latency through automated feedback loops.
+        Drop in our <Highlight>one-line SDK</Highlight> to start monitoring your AI system&apos;s
+        performance in production.
       </p>
     ),
   },
   {
     id: 1,
-    name: 'A/B Test Results',
-    designation: 'Performance',
+    name: 'Auto-Optimization',
+    designation: 'In Progress',
     content: (
       <p>
-        Version 2.1 shows <Highlight>23% improvement</Highlight> in user satisfaction scores
-        compared to previous iteration with enhanced context understanding.
+        System prompts are <Highlight>automatically refined</Highlight> until they meet your defined
+        evaluation thresholds.
       </p>
     ),
   },
   {
     id: 2,
-    name: 'Scoring System',
-    designation: 'Metrics',
+    name: 'Continuous Testing',
+    designation: 'Live',
     content: (
       <p>
-        Objective evaluation framework provides <Highlight>consistent scoring</Highlight> across all
-        prompt variations ensuring reliable performance comparisons.
+        Production traffic is <Highlight>shadow tested</Highlight> against optimized prompts before
+        deployment.
       </p>
     ),
   },
@@ -710,16 +705,13 @@ const OrbitingIcons = ({
 
 const PromptOrbit = () => {
   const orbit1Icons = [
-    <IconDatabase key="database" className="w-8 h-8 text-purple-400" />,
-    <IconCode key="code" className="w-8 h-8 text-blue-400" />,
-    <IconSettings key="settings" className="w-8 h-8 text-green-400" />,
+    <AiOutlineOpenAI key="openai" className="w-8 h-8 text-zinc-500" />,
+    <SiGooglegemini key="gemini" className="w-8 h-8 text-zinc-500" />,
   ];
 
   const orbit2Icons = [
-    <IconBrain key="brain" className="w-6 h-6 text-purple-300" />,
-    <IconGitBranch key="branch" className="w-6 h-6 text-blue-300" />,
-    <IconRefresh key="refresh" className="w-6 h-6 text-green-300" />,
-    <IconUsers key="users" className="w-6 h-6 text-yellow-300" />,
+    <RiClaudeLine key="claude" className="w-8 h-8 text-zinc-500" />,
+    <SiOllama key="ollama" className="w-8 h-8 text-zinc-500" />,
   ];
 
   return (
@@ -728,13 +720,13 @@ const PromptOrbit = () => {
         {
           icons: orbit1Icons,
           rotationDirection: 'clockwise',
-          radius: 80,
+          radius: 60,
           speed: 8,
         },
         {
           icons: orbit2Icons,
           rotationDirection: 'anticlockwise',
-          radius: 140,
+          radius: 120,
           speed: 12,
         },
       ]}
